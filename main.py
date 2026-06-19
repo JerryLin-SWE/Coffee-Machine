@@ -40,9 +40,7 @@ def report():
     )
 
 def prompt(user_input):
-    if user_input == "off":
-        return
-    elif user_input == "espresso":
+    if user_input == "espresso":
         return
     elif user_input == "latte":
         return
@@ -54,6 +52,11 @@ def prompt(user_input):
 
 print(MENU)
 report()
-
-user_input = input("What would you like? (espresso/latte/cappuccino): ").lower()
-prompt(user_input)
+want_to_buy = True
+while want_to_buy:
+    user_input = input("What would you like? (espresso/latte/cappuccino): ").lower()
+    if user_input == "off":
+        print("Thank you for your purchase !")
+        want_to_buy = False
+    else:
+       prompt(user_input)
