@@ -30,7 +30,7 @@ resources = {
     "coffee": 100,
 }
 
-#TODO  1. Print the report of all the coffeee machine resources.
+# print(MENU["espresso"]["ingredients"]["water"])
 
 def report():
     print(
@@ -41,14 +41,82 @@ def report():
 
 def prompt(user_input):
     if user_input == "espresso":
-        return
+        check_enough_resource(user_input)
     elif user_input == "latte":
-        return
+        check_enough_resource(user_input)
     elif user_input == "cappuccino":
-        return
+        check_enough_resource(user_input)
     else :
-        print("invalid statement please try again.")    
+        print("invalid statement please try again.")
 
+
+def check_enough_resource(user_choice,):
+
+     if user_choice == "espresso":
+        if resources["water"] < MENU["espresso"]["ingredients"]["water"] :
+            print ("insufficient water, please reload ")
+            return
+        elif resources["coffee"] < MENU["espresso"]["ingredients"]["coffee"] :
+            print("insufficient coffee please reload")
+            return
+        else:
+            resources["water"] -= MENU["espresso"]["ingredients"]["water"]
+            resources["coffee"] -= MENU["espresso"]["ingredients"]["coffee"]
+            print(f"The cofee amount now is {resources["coffee"]}")
+            print(f"The water amount now is {resources["water"]}")
+            print(f"The milk amount now is {resources["milk"]}")
+            print("Here you go with your espresso.")
+
+     elif user_choice == "latte":
+         if resources["water"] < MENU["latte"]['ingredients']['water']:
+             print("insufficient water, please reload")
+             return
+         elif resources["milk"] < MENU["latte"]['ingredients']['milk']:
+             print('insufficient milk  please try again')
+             return
+         elif resources["coffee"] < MENU["latte"]['ingredients']['coffee']:
+             print("insufficient coffee please try again")
+             return
+
+         else:
+             resources["water"] -= MENU["latte"]['ingredients']['water']
+             resources["milk"] -= MENU["latte"]['ingredients']['milk']
+             resources["coffee"] -= MENU["latte"]['ingredients']['coffee']
+             print(f"The cofee amount now is {resources["coffee"]}")
+             print(f"The water amount now is {resources["water"]}")
+             print(f"The milk amount now is {resources["milk"]}")
+             print(" Here you go with your latte")
+
+
+     elif user_choice == "cappuccino":
+        if resources["water"] < MENU["cappuccino"]['ingredients']['water']:
+            print("insufficent water please reload")
+            return
+
+
+        elif resources["milk"] < MENU["cappuccino"]['ingredients']['milk']:
+            print('insufficient milk  please try again')
+            return
+
+        elif resources["coffee"] < MENU["cappuccino"]['ingredients']['coffee']:
+             print("insufficient coffee please try again")
+             return
+        else:
+             resources["water"] -= MENU["cappuccino"]['ingredients']['water']
+             resources["milk"] -= MENU["cappuccino"]['ingredients']['milk']
+             resources["coffee"] -= MENU["cappuccino"]['ingredients']['coffee']
+             print(f"The cofee amount now is {resources["coffee"]}")
+             print(f"The water amount now is {resources["water"]}")
+             print(f"The milk amount now is {resources["milk"]}")
+             print(" Here you go with your cappuccino")
+
+
+
+
+
+
+
+user_coin = 0.0
 
 print(MENU)
 report()
