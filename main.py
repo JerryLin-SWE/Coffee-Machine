@@ -144,10 +144,11 @@ def load_coin(cost):
         user_choice = input("What kind of coin do you want to load? penny,quater,nickel,or dime \n").lower()
 
         if user_choice == "off":
-            print(f"Thank you for loading coins your amount is {wallet['balance']}")
+            print(f"Thank you for loading coins your amount is {wallet['balance']} refunded")
+            wallet['balance'] = 0
             loading = False
 
-        if user_choice == "quater":
+        elif user_choice == "quater":
              wallet['balance'] += quarters
 
         elif user_choice == "dimes":
@@ -205,13 +206,14 @@ def insert_coin(user_input):
 
 
 print(MENU)
-report()
 want_to_buy = True
 while want_to_buy:
     user_input = input("What would you like? (espresso/latte/cappuccino): ").lower()
     if user_input == "off":
         print("Thank you for your purchase !")
         want_to_buy = False
+    elif user_input == "report":
+        report()
     else:
        prompt(user_input)
 
